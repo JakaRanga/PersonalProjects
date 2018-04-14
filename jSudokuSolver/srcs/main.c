@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2018
+** JAKA PROJECT, 2018
 ** Sudoku solver
 ** File description:
 ** main
