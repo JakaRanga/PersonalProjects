@@ -9,11 +9,9 @@
 
 void	print_map(int **map)
 {
-	char	c;
 	int	i, j;
 
 	i = -1;
-	c = '\n';
 	while (++i != 9)
 	{
 		j = -1;
@@ -28,7 +26,7 @@ void	print_map(int **map)
 			my_printf("%i", map[i][j]);
 		}
 		my_printf("|");
-		write(1, &c, 1);
+		write(1, "\n", 1);
 	}
 	my_printf("+-----+-----+-----+\n");
 
