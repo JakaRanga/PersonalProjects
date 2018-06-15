@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="jPwdGenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PwdUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USER" Type="int" Nullable="false" />
+          <Property Name="LB_SOFT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LB_PWD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IS_ACTIVE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LB_USER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LB_FNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LB_LNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LB_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LB_PWD" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PwdUser_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PwdUser" Type="Self.PwdUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PwdUser">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jPwdGenModelStoreContainer">
+          <EntitySet Name="PwdUser" EntityType="Self.PwdUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PwdUser_Users" Association="Self.FK_PwdUser_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PwdUser" EntitySet="PwdUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="jPwdGenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="jPwdGenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PwdUser" EntityType="jPwdGenModel.PwdUser" />
+          <EntitySet Name="Users" EntityType="jPwdGenModel.Users" />
+          <AssociationSet Name="FK_PwdUser_Users" Association="jPwdGenModel.FK_PwdUser_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PwdUser" EntitySet="PwdUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PwdUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USER" Type="Int32" Nullable="false" />
+          <Property Name="LB_SOFT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LB_PWD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="jPwdGenModel.FK_PwdUser_Users" FromRole="PwdUser" ToRole="Users" />
+          <Property Name="IS_ACTIVE" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LB_USER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LB_FNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LB_LNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LB_EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LB_PWD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PwdUser" Relationship="jPwdGenModel.FK_PwdUser_Users" FromRole="Users" ToRole="PwdUser" />
+        </EntityType>
+        <Association Name="FK_PwdUser_Users">
+          <End Type="jPwdGenModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="jPwdGenModel.PwdUser" Role="PwdUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PwdUser">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="jPwdGenModelStoreContainer" CdmEntityContainer="jPwdGenEntities">
+          <EntitySetMapping Name="PwdUser">
+            <EntityTypeMapping TypeName="jPwdGenModel.PwdUser">
+              <MappingFragment StoreEntitySet="PwdUser">
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="LB_PWD" ColumnName="LB_PWD" />
+                <ScalarProperty Name="LB_SOFT" ColumnName="LB_SOFT" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="jPwdGenModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="LB_PWD" ColumnName="LB_PWD" />
+                <ScalarProperty Name="LB_EMAIL" ColumnName="LB_EMAIL" />
+                <ScalarProperty Name="LB_LNAME" ColumnName="LB_LNAME" />
+                <ScalarProperty Name="LB_FNAME" ColumnName="LB_FNAME" />
+                <ScalarProperty Name="LB_USER" ColumnName="LB_USER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

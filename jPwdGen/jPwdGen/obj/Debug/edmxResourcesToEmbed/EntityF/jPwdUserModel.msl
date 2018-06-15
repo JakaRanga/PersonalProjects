@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jPwdGenModel1StoreContainer" CdmEntityContainer="jPwdUserEntities">
+    <EntitySetMapping Name="PWD_BY_USER">
+      <EntityTypeMapping TypeName="jPwdGenModel1.PWD_BY_USER">
+        <MappingFragment StoreEntitySet="PWD_BY_USER">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="USER" ColumnName="USER" />
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="SOFT" ColumnName="SOFT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

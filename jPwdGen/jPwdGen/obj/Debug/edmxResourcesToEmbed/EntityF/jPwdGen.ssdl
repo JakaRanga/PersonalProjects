@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jPwdGenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PwdUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_USER" Type="int" Nullable="false" />
+    <Property Name="LB_SOFT" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LB_PWD" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IS_ACTIVE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LB_USER" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LB_FNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LB_LNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LB_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LB_PWD" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PwdUser_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PwdUser" Type="Self.PwdUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PwdUser">
+        <PropertyRef Name="ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="jPwdGenModelStoreContainer">
+    <EntitySet Name="PwdUser" EntityType="Self.PwdUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PwdUser_Users" Association="Self.FK_PwdUser_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PwdUser" EntitySet="PwdUser" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

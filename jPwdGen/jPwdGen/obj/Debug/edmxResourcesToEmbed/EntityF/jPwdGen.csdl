@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jPwdGenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="jPwdGenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PwdUser" EntityType="jPwdGenModel.PwdUser" />
+    <EntitySet Name="Users" EntityType="jPwdGenModel.Users" />
+    <AssociationSet Name="FK_PwdUser_Users" Association="jPwdGenModel.FK_PwdUser_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PwdUser" EntitySet="PwdUser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PwdUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USER" Type="Int32" Nullable="false" />
+    <Property Name="LB_SOFT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LB_PWD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="jPwdGenModel.FK_PwdUser_Users" FromRole="PwdUser" ToRole="Users" />
+    <Property Name="IS_ACTIVE" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LB_USER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LB_FNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LB_LNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LB_EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LB_PWD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PwdUser" Relationship="jPwdGenModel.FK_PwdUser_Users" FromRole="Users" ToRole="PwdUser" />
+  </EntityType>
+  <Association Name="FK_PwdUser_Users">
+    <End Type="jPwdGenModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="jPwdGenModel.PwdUser" Role="PwdUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PwdUser">
+        <PropertyRef Name="ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

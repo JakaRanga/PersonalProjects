@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jPwdGenModelStoreContainer" CdmEntityContainer="jPwdGenEntities">
+    <EntitySetMapping Name="PwdUser">
+      <EntityTypeMapping TypeName="jPwdGenModel.PwdUser">
+        <MappingFragment StoreEntitySet="PwdUser">
+          <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+          <ScalarProperty Name="LB_PWD" ColumnName="LB_PWD" />
+          <ScalarProperty Name="LB_SOFT" ColumnName="LB_SOFT" />
+          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="jPwdGenModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="LB_PWD" ColumnName="LB_PWD" />
+          <ScalarProperty Name="LB_EMAIL" ColumnName="LB_EMAIL" />
+          <ScalarProperty Name="LB_LNAME" ColumnName="LB_LNAME" />
+          <ScalarProperty Name="LB_FNAME" ColumnName="LB_FNAME" />
+          <ScalarProperty Name="LB_USER" ColumnName="LB_USER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
