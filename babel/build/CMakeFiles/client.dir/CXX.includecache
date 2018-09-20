@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jakaresse/delivery/Cpp/CPP_babel_2018/gui_src/main.cpp
+cstdio
+-
+boost/asio.hpp
+-
+

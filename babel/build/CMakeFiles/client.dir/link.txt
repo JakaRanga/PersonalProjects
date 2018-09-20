@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11  -rdynamic CMakeFiles/client.dir/gui_src/main.cpp.o  -o client -Wl,-Bstatic -lboost_filesystem -lboost_system -Wl,-Bdynamic 
